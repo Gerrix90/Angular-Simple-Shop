@@ -10,8 +10,10 @@ export class Category {
   title: string;
   // Description
   desc: string;
-  // Path to image
-  image: string;
+  // Path to imageS
+  imageL: string;
+  // Path to imageL
+  imageS: string;
 }
 
 const categories: Category[]  = [

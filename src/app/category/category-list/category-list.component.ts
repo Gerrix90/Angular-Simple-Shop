@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Category, getCategories} from "../category";
 
 @Component({
   selector: 'db-category-list',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-list.component.css']
 })
 export class CategoryListComponent implements OnInit {
+  categories: Category[] = [];
 
   constructor() { }
 
   ngOnInit() {
+    this.categories = getCategories()
   }
+
+
+
 
 }
