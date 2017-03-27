@@ -2,25 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {CategoryModule} from "./category/category.module";
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { CategoryCardComponent } from './category/category-card/category-card.component';
-import { CategoryListComponent } from './category/category-list/category-list.component';
-import { CategorySliderComponent } from './category/category-slider/category-slider.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    CategoryCardComponent,
-    CategoryListComponent,
-    CategorySliderComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    CategoryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
