@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
+import {Category} from "../category";
 
 @Component({
   selector: 'db-category-slider',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-slider.component.css']
 })
 export class CategorySliderComponent implements OnInit {
+  @Input() category: Category;
+  @Output() selected: EventEmitter<Category> = new EventEmitter<Category>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSelect(){
+    this.selected.emit(this.category)
+  }
 }
