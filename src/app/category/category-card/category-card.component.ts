@@ -8,7 +8,7 @@ import {Category} from "../category";
 })
 export class CategoryCardComponent implements OnInit {
   @Input() category: Category;
-  @Output() selected: EventEmmiter<Category> = new EventEmitter<Category>();
+  @Output() selected: EventEmitter<Category> = new EventEmitter<Category>();
 
   constructor() { }
 
@@ -16,7 +16,7 @@ export class CategoryCardComponent implements OnInit {
   }
 
   onSelect(){
-    this.selected.emmit(this.category)
+    this.selected.emit(this.category)
   }
 
 }
