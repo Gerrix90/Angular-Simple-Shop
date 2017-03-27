@@ -1,4 +1,6 @@
 <db-navbar></db-navbar>
 <div class="container">
-	<db-category-list></db-category-list>
+	<div class="row">
+		<db-category-card *ngFor="let cat of categories" [category]="cat"></db-category-card>
+	</div>
 </div>
