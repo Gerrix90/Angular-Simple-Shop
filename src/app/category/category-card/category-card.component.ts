@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Category} from "../category";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'db-category-card',
@@ -10,13 +11,15 @@ export class CategoryCardComponent implements OnInit {
   @Input() category: Category;
   @Output() selected: EventEmitter<Category> = new EventEmitter<Category>();
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
-  onSelect(){
-    this.selected.emit(this.category)
+  onSelect(category: Category){
+    // this.selected.emit(this.category)
+    console.log(category);
+    this.router.navigate(['products'],{queryParams: {category: category.id}})
   }
 
 }
