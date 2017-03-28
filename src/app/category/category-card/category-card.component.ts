@@ -18,7 +18,7 @@ export class CategoryCardComponent implements OnInit {
 
   onSelect(category: Category){
     // this.selected.emit(this.category)
-    console.log(category);
+    // console.log(category);
     this.router.navigate(['products'],{queryParams: {category: category.id}})
   }
 
