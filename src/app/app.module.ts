@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductSearchComponent } from './product/product-search/product-search.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ProductSearchComponent } from './product/product-search/product-search.
     WelcomeComponent,
     FooterComponent,
     ProductSearchComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,

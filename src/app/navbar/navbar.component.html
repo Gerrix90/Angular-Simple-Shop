@@ -5,10 +5,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
-      <a class="navbar-brand" href="" [innerHTML]="appName"></a>
+      <a class="navbar-brand" [routerLink]="['/welcome']" [innerHTML]="appName"></a>
       <ul class="nav navbar-nav">
         <li class="nav-item" *ngFor="let item of navItems" [ngClass]="{active: item.active}">
-          <a class="nav-link" [href]="item.href">{{item.label}}</a>
+          <a class="nav-link" [routerLink]="[item.href]">{{item.label}}</a>
         </li>
       </ul>
     </div>
