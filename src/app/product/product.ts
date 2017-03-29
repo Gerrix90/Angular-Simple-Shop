@@ -42,13 +42,26 @@ var products: Product[] = [
   // Fruit & Veg
   { id: '13', categoryId: '6', title: 'Banana', price: 1.55, isSpecial: false, imageL: 'http://placehold.it/1110x480', imageS: 'http://placehold.it/270x171', desc: 'The banana is an edible fruit, botanically a berry, produced by several kinds of large herbaceous flowering plants in the genus Musa.' },
   { id: '14', categoryId: '6', title: 'Cucumber', price: 1.05, isSpecial: false, imageL: 'http://placehold.it/1110x480', imageS: 'http://placehold.it/270x171', desc: 'Cucumber is a widely cultivated plant in the gourd family, Cucurbitaceae. ' },
-  { id: '15', categoryId: '6', title: 'Apple', price: 0.80, isSpecial: false, imageL: 'http://placehold.it/1110x480', imageS: 'http://placehold.it/270x171', desc: 'The apple tree is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple.' },
+  { id: '15', categoryId: '6', title: 'Apple', price: 0.80, isSpecial: true, imageL: 'http://placehold.it/1110x480', imageS: 'http://placehold.it/270x171', desc: 'The apple tree is a deciduous tree in the rose family best known for its sweet, pomaceous fruit, the apple.' },
   { id: '16', categoryId: '6', title: 'Lemon', price: 3.20, isSpecial: false, imageL: 'http://placehold.it/1110x480', imageS: 'http://placehold.it/270x171', desc: 'The lemon is a species of small evergreen tree native to Asia.' },
   { id: '17', categoryId: '6', title: 'Pear', price: 4.25, isSpecial: false, imageL: 'http://placehold.it/1110x480', imageS: 'http://placehold.it/270x171', desc: 'The pear is any of several tree and shrub species of genus Pyrus, in the family Rosaceae.' }
 ];
 
-export function getProducts() {
-  return products;
+export function getProducts(category?: string, search?: string) {
+  if (category) {
+    return products.filter((product: Product, index: number, array: Product[]) => {
+      return product.categoryId === category;
+    });
+  } else if (search) {
+    let lowSearch = search.toLowerCase();
+    return products.filter(
+      (product: Product, index: number, array: Product[]) => {
+        return product.title.toLowerCase().
+          indexOf(lowSearch) != -1;
+      });
+  } else {
+    return products;
+  }
 }
 
 export function getProduct(id: string): Product {

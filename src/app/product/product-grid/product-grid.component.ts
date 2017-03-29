@@ -19,7 +19,7 @@ export class ProductGridComponent implements OnInit {
       let products: Product[] =
         getProducts(category, search);
       // Transform products to appropriate data to display
-      this.products = this.transformProducts(products);
+      this.productsRow = this.transformProducts(products);
     })
   }
 
@@ -51,7 +51,7 @@ export class ProductGridComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.productsRow)
+    // console.log(this.productsRow)
   }
 
 }
