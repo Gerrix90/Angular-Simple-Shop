@@ -14,4 +14,11 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  setClasses(product: Product) {
+    return {
+      'card-danger': product.isSpecial,
+      'card-inverse': product.isSpecial
+    };
+  }
+
 }
