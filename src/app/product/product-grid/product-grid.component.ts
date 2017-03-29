@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {getProducts, Product} from "../product";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'db-product-grid',
@@ -9,12 +10,23 @@ import {getProducts, Product} from "../product";
 export class ProductGridComponent implements OnInit {
   productsRow: any;
 
-  constructor() {
-    let index = 0;
-    let products: Product[] = getProducts();
-    let length = products.length;
+  constructor( private route:ActivatedRoute) {
+    //subscribe route
+    this.route.queryParams.subscribe(params => {
+      let category: string = params['category'];
+      let search: string = params['search'];
+      // Return filtered data from getProducts function
+      let products: Product[] =
+        getProducts(category, search);
+      // Transform products to appropriate data to display
+      this.products = this.transformProducts(products);
+    })
+  }
 
-    this.productsRow = [];
+  transformProducts(products:Product[]){
+    let index = 0;
+    let length = products.length;
+    let productsRow = [];
 
     //split array 3in row
     while (length) {
@@ -23,16 +35,20 @@ export class ProductGridComponent implements OnInit {
         for (let i = 0; i < 3; i++) {
           row.push(products[index++]);
         }
-        this.productsRow.push(row);
+        productsRow.push(row);
         length -= 3;
       } else {
         for (; length > 0; length--) {
           row.push(products[index++]);
         }
-        this.productsRow.push(row);
+        productsRow.push(row);
       }
     }
+    return productsRow
   }
+
+
+
 
   ngOnInit() {
     console.log(this.productsRow)
