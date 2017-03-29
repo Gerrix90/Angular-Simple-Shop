@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {getProducts, Product} from "../product";
 
 @Component({
   selector: 'db-product-grid',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-grid.component.css']
 })
 export class ProductGridComponent implements OnInit {
+  products: Product[] = getProducts();
 
   constructor() { }
 
