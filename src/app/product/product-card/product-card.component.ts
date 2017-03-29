@@ -21,4 +21,8 @@ export class ProductCardComponent implements OnInit {
     };
   }
 
+  buy(product: Product) {
+    console.log('We bought', product.title);
+  }
+
 }
