@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductSearchComponent } from './product/product-search/product-search.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ProductCardComponent } from './product/product-card/product-card.component';
+import { ProductGridComponent } from './product/product-grid/product-grid.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProductCardComponent } from './product/product-card/product-card.compon
     ProductSearchComponent,
     ProductListComponent,
     ProductCardComponent,
+    ProductGridComponent,
   ],
   imports: [
     BrowserModule,
