@@ -1,3 +1,5 @@
-<div class="card-group">
-  <db-product-card *ngFor="let item of products"></db-product-card>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let item of products">
+    <db-product-card  [product]="item"></db-product-card>
+  </div>
 </div>
