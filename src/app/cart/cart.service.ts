@@ -105,7 +105,4 @@ export class CartService {
     // Decrease amount in the cart
     this.cart.amount -= item.amount;
   }
-
-
-
 }
