@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Cart, CartService} from "../cart.service";
 
 @Component({
   selector: 'db-cart-menu',
@@ -7,7 +8,10 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CartMenuComponent implements OnInit {
 
-  constructor() {
+  private cart: Cart;
+
+  constructor(private cartService: CartService) {
+    this.cart = this.cartService.cart;
   }
 
   ngOnInit() {
