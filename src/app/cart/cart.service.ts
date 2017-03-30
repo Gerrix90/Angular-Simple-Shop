@@ -67,5 +67,45 @@ export class CartService {
   }
 
 
+  /**
+   * This method decreases the number of the same products
+   * in the cart or removes the last product.
+   * It updates the amount and count of items in the cart.
+   */
+  removeProduct(product: Product) {
+    // Find CartItem in items
+    let item: CartItem = this.findItem(product.id);
+    // Check is item found?
+    if (item) {
+      // Decrease the count
+      item.count--;
+      // Check was that the last product?
+      if (!item.count) {
+        // It was last product
+        // Delete item from items
+        this.remove(item);
+      }
+      // Decrease count in the cart
+      this.cart.count--;
+      // Decrease amount in the cart
+      this.cart.amount -= product.price;
+    }
+  }
+
+
+  /**
+   * Remove item from the cart.
+   * It updates the amount and count of items in the cart.
+   */
+  removeItem(item: CartItem) {
+    // Delete item from items
+    this.remove(item);
+    // Decrease count in the cart
+    this.cart.count -= item.count;
+    // Decrease amount in the cart
+    this.cart.amount -= item.amount;
+  }
+
+
 
 }
