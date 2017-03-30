@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarToggler">
       <a class="navbar-brand" [routerLink]="['/welcome']" [innerHTML]="appName"></a>
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav mr-auto">
         <li class="nav-item" *ngFor="let item of navItems" [ngClass]="{active: item.active}">
           <a class="nav-link" [routerLink]="[item.href]">{{item.label}}</a>
         </li>

@@ -11,6 +11,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
 import {CartMenuComponent} from './cart/cart-menu/cart-menu.component';
+import {CartService} from "./cart/cart.service";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {CartMenuComponent} from './cart/cart-menu/cart-menu.component';
     appRouting,
     ProductModule
   ],
-  providers: [],
+  providers: [CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
