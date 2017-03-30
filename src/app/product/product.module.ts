@@ -12,6 +12,7 @@ import {ProductSearchComponent} from "./product-search/product-search.component"
 import {ProductListComponent} from "./product-list/product-list.component";
 import {ProductCardComponent} from "./product-card/product-card.component";
 import {ProductGridComponent} from "./product-grid/product-grid.component";
+import {ProductService} from "./product.service";
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {ProductGridComponent} from "./product-grid/product-grid.component";
     ProductListComponent,
     ProductCardComponent,
     ProductGridComponent
-  ]
+  ],
+  providers: [ProductService]
 
 })export class ProductModule{}
