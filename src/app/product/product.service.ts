@@ -218,7 +218,7 @@ export class ProductService {
           return product.title.toLowerCase().indexOf(lowSearch) != -1;
         });
     } else {
-      return this.products;
+      return this.products
     }
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {getProducts, Product} from "../product.service";
+import {Product, ProductService} from "../product.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -10,14 +10,17 @@ import {ActivatedRoute} from "@angular/router";
 export class ProductGridComponent implements OnInit {
   productsRow: any;
 
-  constructor( private route:ActivatedRoute) {
+  constructor(
+    private productService: ProductService,
+    private route:ActivatedRoute) {
+
     //subscribe route
     this.route.queryParams.subscribe(params => {
       let category: string = params['category'];
       let search: string = params['search'];
       // Return filtered data from getProducts function
       let products: Product[] =
-        getProducts(category, search);
+        this.productService.getProducts(category, search);
       // Transform products to appropriate data to display
       this.productsRow = this.transformProducts(products);
     })
@@ -46,9 +49,6 @@ export class ProductGridComponent implements OnInit {
     }
     return productsRow
   }
-
-
-
 
   ngOnInit() {
     // console.log(this.productsRow)
