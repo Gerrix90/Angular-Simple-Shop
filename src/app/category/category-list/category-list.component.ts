@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Category, getCategories} from "../category";
+import {Category, CategoryService} from "../category.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,10 +10,11 @@ import {Router} from "@angular/router";
 export class CategoryListComponent implements OnInit {
   categories: Category[] = [];
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+              private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categories = getCategories()
+    this.categories = this.categoryService.getCategories()
   }
 
   filterProducts(category: Category) {
@@ -22,3 +23,4 @@ export class CategoryListComponent implements OnInit {
     });
   }
 }
+

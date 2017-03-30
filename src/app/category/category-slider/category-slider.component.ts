@@ -1,5 +1,5 @@
 import {Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
-import {Category} from "../category";
+import {Category} from "../category.service";
 
 @Component({
   selector: 'db-category-slider',

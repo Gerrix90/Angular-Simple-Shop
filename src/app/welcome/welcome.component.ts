@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Category, getCategories} from "../category/category";
+import {Category, CategoryService} from "../category/category.service";
 
 @Component({
   selector: 'db-welcome',
@@ -9,10 +9,9 @@ import {Category, getCategories} from "../category/category";
 export class WelcomeComponent implements OnInit {
   categories: Category[] = [];
 
-  constructor() { }
+  constructor( private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categories = getCategories()
+    this.categories = this.categoryService.getCategories()
   }
-
 }
