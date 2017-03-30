@@ -1,3 +1,15 @@
-<p>
-	cart-menu works!
-</p>
+<ul class="nav navbar-nav float-xs-right">
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" data-toggle="dropdown"
+		   href="#" role="button" aria-haspopup="true"
+		   aria-expanded="false">
+			Cart: {{cart.amount}} ({{cart.count}} items)
+		</a>
+		<div class="dropdown-menu dropdown-menu-right"
+		     aria-labelledby="cart">
+			<a class="dropdown-item" href="#">Action</a>
+			<a class="dropdown-item" href="#">Another action</a>
+			<a class="dropdown-item" href="#">Something else here</a>
+		</div>
+	</li>
+</ul>

@@ -29,7 +29,7 @@ export class CartService {
    */
   addProduct(product: Product) {
     // Find CartItem in items
-    let item: CartItem = this.findItem();
+    let item: CartItem = this.findItem(product.id);
     // Check was it found?
     if(item){
         // Item was found.
@@ -89,6 +89,19 @@ export class CartService {
       this.cart.count--;
       // Decrease amount in the cart
       this.cart.amount -= product.price;
+    }
+  }
+
+  /**
+   * This method removes existing cart item.
+   */
+  private remove(item: CartItem) {
+    // Find the index of cart item
+    let indx: number = this.cart.items.indexOf(item);
+    // Check was item found
+    if (indx !== -1) {
+      // Remove element from array
+      this.cart.items.splice(indx, 1);
     }
   }
 
