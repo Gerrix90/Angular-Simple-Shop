@@ -19,12 +19,16 @@
       "prefix": "db",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
         "styles.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
         "../node_modules/tether/dist/js/tether.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js"
+      ],
+      "addons": [
+        "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
       ],
       "environments": {
         "source": "environments/environment.ts",
