@@ -13,6 +13,7 @@ import {ProductListComponent} from "./product-list/product-list.component";
 import {ProductCardComponent} from "./product-card/product-card.component";
 import {ProductGridComponent} from "./product-grid/product-grid.component";
 import {ProductService} from "./product.service";
+import {ProductViewComponent} from './product-view/product-view.component';
 
 
 @NgModule({
@@ -26,13 +27,15 @@ import {ProductService} from "./product.service";
     ProductSearchComponent,
     ProductListComponent,
     ProductCardComponent,
-    ProductGridComponent
+    ProductGridComponent,
+    ProductViewComponent
   ],
   exports:[
     ProductSearchComponent,
     ProductListComponent,
     ProductCardComponent,
-    ProductGridComponent
+    ProductGridComponent,
+    ProductViewComponent
   ],
   providers: [ProductService]
 
