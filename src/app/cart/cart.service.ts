@@ -13,8 +13,8 @@ export interface CartItem {
 }
 
 export class Cart {
-  count: number = 10;
-  amount: number = 1000;
+  count: number = 0;
+  amount: number = 0;
   items: CartItem[] = [];
 }
 
