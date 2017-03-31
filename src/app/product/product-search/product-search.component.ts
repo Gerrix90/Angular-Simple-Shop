@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./product-search.component.css']
 })
 export class ProductSearchComponent implements OnInit {
+  disabled: boolean = true;
 
   constructor(private router:Router) { }
 
@@ -15,5 +16,19 @@ export class ProductSearchComponent implements OnInit {
 
   searchProduct(search: string){
     this.router.navigate(['products'],{queryParams: {search: search}})
+  }
+
+  searchChanged(event: KeyboardEvent) {
+
+    // Get an input element
+    let element: HTMLInputElement = <HTMLInputElement>event.target;
+
+    // Update the disabled property depends on value
+    if ((element.value).trim()) {
+      this.disabled = false
+    } else {
+      this.disabled = true
+    }
+
   }
 }
