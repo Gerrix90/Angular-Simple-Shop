@@ -57,7 +57,7 @@ export class CartService {
   /**
    * This method returns cart item by product id or null.
    */
-  private findItem(id: string): CartItem {
+  findItem(id: string): CartItem {
     for (let i = 0; i < this.cart.items.length; i++) {
       if (this.cart.items[i].product.id === id) {
         return this.cart.items[i];
