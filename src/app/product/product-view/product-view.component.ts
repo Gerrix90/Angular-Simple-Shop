@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from "../product.service";
+import {Product, ProductService} from "../product.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'db-product-view',
@@ -8,10 +9,18 @@ import {Product} from "../product.service";
 })
 export class ProductViewComponent implements OnInit {
   product: Product;
-  constructor() {
+
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      // get the product id
+      let id: string = params['id'];
+      // Return the product from ProductService
+      this.product = this.productService.getProduct(id)
+    })
   }
 
 }
