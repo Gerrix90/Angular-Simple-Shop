@@ -7,6 +7,7 @@ import {CartService} from "./cart.service";
 import {CartMenuComponent} from "./cart-menu/cart-menu.component";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
+import {CartViewComponent} from './cart-view/cart-view.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {RouterModule} from "@angular/router";
     RouterModule
   ],
   declarations: [
-    CartMenuComponent
+    CartMenuComponent,
+    CartViewComponent
   ],
   exports: [
     CartMenuComponent
