@@ -27,7 +27,7 @@ export class CartService {
    * of the same products in the cart.
    * It updates the amount and count of items in the cart.
    */
-  addProduct(product: Product) {
+  addProduct(product: Product): CartItem {
     // Find CartItem in items
     let item: CartItem = this.findItem(product.id);
     // Check was it found?
@@ -52,6 +52,7 @@ export class CartService {
     this.cart.count++;
     // Increase amount in the cart
     this.cart.amount += product.price;
+    return item
   }
 
   /**
@@ -72,13 +73,15 @@ export class CartService {
    * in the cart or removes the last product.
    * It updates the amount and count of items in the cart.
    */
-  removeProduct(product: Product) {
+  removeProduct(product: Product): CartItem {
     // Find CartItem in items
     let item: CartItem = this.findItem(product.id);
     // Check is item found?
     if (item) {
       // Decrease the count
       item.count--;
+      // Substract price
+      item.amount -= product.price;
       // Check was that the last product?
       if (!item.count) {
         // It was last product
@@ -89,6 +92,7 @@ export class CartService {
       this.cart.count--;
       // Decrease amount in the cart
       this.cart.amount -= product.price;
+      return item
     }
   }
 

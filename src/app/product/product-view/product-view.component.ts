@@ -36,4 +36,12 @@ export class ProductViewComponent implements OnInit {
     })
   }
 
+  addToCart() {
+    this.cartItem = this.cartService.addProduct(this.product);
+  }
+
+  removeFromCart() {
+    this.cartItem = this.cartService.removeProduct(this.product);
+  }
+
 }
