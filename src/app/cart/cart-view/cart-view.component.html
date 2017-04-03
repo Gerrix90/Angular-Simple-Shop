@@ -1,29 +1,58 @@
-<div *ngIf="cart.count">
-	<form>
-		<div class="table-responsive">
-			<table class="table table-sm table-striped table-bordered table-cart">
-				<tbody>
-				<tr>
-					<td class="font-weight-bold">Title</td>
-					<td class="font-weight-bold">Price</td>
-					<td class="font-weight-bold">Count</td>
-					<td class="font-weight-bold">Amount</td>
-				</tr>
-				<tr *ngFor="let item of cart.items">
-					<td>{{item.product.title}}</td>
-					<td>{{item.product.price | currency:'USD':true:'1.2-2'}}</td>
-					<td>
-						<input type="number"
-						       name="{{item.product.id}}"
-						       [ngModel]="item.count"
-						       (ngModelChange)="item.count = update($event, item)"
-						       min="1">
-					</td>
-					<td>{{item.amount | currency:'USD':true:'1.2-2'}}</td>
-				</tr>
-				</tbody>
-			</table>
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<div *ngIf="cart.count">
+				<form>
+					<div class="table-responsive">
+						<table class="table table-sm table-striped table-bordered table-cart">
+							<tbody>
+							<tr>
+								<td class="font-weight-bold">Title</td>
+								<td class="font-weight-bold">Price</td>
+								<td class="font-weight-bold">Count</td>
+								<td class="font-weight-bold">Amount</td>
+							</tr>
+							<tr *ngFor="let item of cart.items">
+								<td>{{item.product.title}}</td>
+								<td>{{item.product.price | currency:'USD':true:'1.2-2'}}</td>
+								<td>
+									<input type="number"
+									       name="{{item.product.id}}"
+									       [ngModel]="item.count"
+									       (ngModelChange)="item.count = update($event, item)"
+									       min="1">
+								</td>
+								<td>{{item.amount | currency:'USD':true:'1.2-2'}}</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</form>
+			</div>
+			<div class="alert alert-info" role="alert" *ngIf="!cart.count">The cart is empty!</div>
 		</div>
-	</form>
+		<div class="col-md-3">
+			<div class="card-block">
+				<form>
+					<div class="form-group row">
+						<label class="col-md form-control-label">Total</label>
+						<div class="col-md">
+							<h4 class="form-control-static">{{cart.amount | currency:'USD':true:'1.2-2'}}</h4>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md">
+							<a class="btn btn-primary btn-block">Checkout</a>
+							<a class="btn btn-secondary btn-block" [routerLink]="['/products']">Continue Shopping</a>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md">
+							<button class="btn btn-danger btn-block">Clear Cart</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="text-center" *ngIf="!cart.count">The cart is empty!</div>
