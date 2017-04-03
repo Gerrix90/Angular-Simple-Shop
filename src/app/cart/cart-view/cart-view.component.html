@@ -16,6 +16,7 @@
 						<input type="number"
 						       name="{{item.product.id}}"
 						       [ngModel]="item.count"
+						       (ngModelChange)="item.count = update($event, item)"
 						       min="1">
 					</td>
 					<td>{{item.amount | currency:'USD':true:'1.2-2'}}</td>

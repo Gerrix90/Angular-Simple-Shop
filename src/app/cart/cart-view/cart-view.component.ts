@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Cart, CartService} from "../cart.service";
+import {Cart, CartService, CartItem} from "../cart.service";
 
 @Component({
   selector: 'db-cart-view',
@@ -14,6 +14,21 @@ export class CartViewComponent implements OnInit {
 
   ngOnInit() {
     this.cart = this.cartService.cart
+  }
+
+  update(value, item: CartItem) {
+    let res = value - item.count;
+
+    if (res > 0) {
+      for (let i = 0; i < res; i++) {
+        this.cartService.addProduct(item.product);
+      }
+    } else if (res < 0) {
+      for (let i = 0; i < -res; i++) {
+        this.cartService.removeProduct(item.product);
+      }
+    }
+    return value;
   }
 
 }
