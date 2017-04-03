@@ -17,3 +17,11 @@ a:hover {
     padding-top: 5px;
     background-color: #f5f5f5;
 }
+
+.ng-valid[required], .ng-valid.required {
+    border-left: 2px solid green;
+}
+
+.ng-invalid:not(form) {
+    border-left: 2px solid red;
+}
