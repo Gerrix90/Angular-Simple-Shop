@@ -31,6 +31,10 @@ export class CartViewComponent implements OnInit {
     return value;
   }
 
+  deleteItem(item) {
+    this.cartService.removeItem(item);
+  }
+
   clearCart() {
     this.cart.items = [];
     this.cart.amount = 0;

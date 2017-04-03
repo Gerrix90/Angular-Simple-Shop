@@ -11,6 +11,7 @@
 								<td class="font-weight-bold">Price</td>
 								<td class="font-weight-bold">Count</td>
 								<td class="font-weight-bold">Amount</td>
+								<td class="font-weight-bold">Delete</td>
 							</tr>
 							<tr *ngFor="let item of cart.items">
 								<td>{{item.product.title}}</td>
@@ -23,6 +24,11 @@
 									       min="1">
 								</td>
 								<td>{{item.amount | currency:'USD':true:'1.2-2'}}</td>
+								<td>
+									<button class="btn btn-danger btn-block" (click)="deleteItem(item)">
+										<i class="fa fa-trash" aria-hidden="true"></i>
+									</button>
+								</td>
 							</tr>
 							</tbody>
 						</table>
