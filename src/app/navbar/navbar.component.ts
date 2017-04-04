@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
   navItems: NavItem[] = [
     {href: 'welcome', label: 'Home', active: true},
     {href: 'products', label: 'Products', active: false},
-    {href: '#', label: 'Checkout', active: false},
+    {href: 'checkout', label: 'Checkout', active: false},
     {href: '#', label: 'Sign out', active: false}
   ];
 
