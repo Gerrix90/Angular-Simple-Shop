@@ -9,6 +9,7 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 })
 export class CheckoutComponent implements OnInit {
 
+  term: boolean;
   cart: Cart;
   form: FormGroup;
 
@@ -27,4 +28,7 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  onSubmit(c) {
+    alert('Submitted');
+  }
 }
