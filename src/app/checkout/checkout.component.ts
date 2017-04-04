@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Cart, CartService} from "../cart/cart.service";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'db-checkout',
@@ -14,6 +15,7 @@ export class CheckoutComponent implements OnInit {
   form: FormGroup;
 
   constructor(private fb: FormBuilder,
+              private router: Router,
               private cartService: CartService) {
     this.cart = this.cartService.cart
   }
@@ -28,7 +30,10 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
-  onSubmit(c) {
+  onSubmit() {
     alert('Submitted');
+    this.cartService.clearCart();
+    this.form.reset();
+    this.router.navigate(['/welcome'])
   }
 }

@@ -122,4 +122,11 @@ export class CartService {
     // Decrease amount in the cart
     this.cart.amount -= item.amount;
   }
+
+  clearCart() {
+    this.cart.items = [];
+    this.cart.amount = 0;
+    this.cart.count = 0;
+  }
 }
+
