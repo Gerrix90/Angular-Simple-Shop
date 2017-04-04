@@ -1,3 +1,61 @@
-<p>
-	checkout works!
-</p>
+<div class="container">
+	<div class="row">
+		<form class="col-12">>
+			<div class="form-group row">
+				<label for="firstName" class="col-2 col-form-label">First Name:</label>
+				<div class="col-10">
+					<input class="form-control" type="text" value="" id="firstName">
+					<p class="alert alert-danger" role="alert">
+						The First Name is required
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="lastName" class="col-2 col-form-label">
+					Last Name:</label>
+				<div class="col-10">
+					<input class="form-control" type="text" value="" id="lastName">
+					<p class="alert alert-danger" role="alert">
+						The Last Name is required
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="email" class="col-2 col-form-label">Email: </label>
+				<div class="col-10">
+					<input class="form-control" type="text" value="" id="email">
+					<p class="alert alert-danger" role="alert">
+						The Email is required
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="phone" class="col-2 col-form-label">Phone: </label>
+				<div class="col-10">
+					<input class="form-control" type="text" value="" id="phone">
+					<p class="alert alert-danger" role="alert">
+						The Phone is required
+					</p>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="address" class="col-2 col-form-label">Address: </label>
+				<div class="col-10">
+					<input class="form-control" type="text" value="" id="address">
+					<p class="alert alert-danger" role="alert">
+						The Address is required
+					</p>
+				</div>
+			</div>
+
+		</form>
+		<div class="col-9">
+			<button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+			<button class="btn btn-secondary" [routerLink]="['/products']">Continue Shopping</button>
+		</div>
+	</div>
+</div>
