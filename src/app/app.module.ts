@@ -12,6 +12,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FooterComponent } from './footer/footer.component';
 import {CheckoutComponent} from './checkout/checkout.component';
+import {InMemoryDataService} from "./shared/in-memory-data.service";
+import {InMemoryWebApiModule} from "angular2-in-memory-web-api";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {CheckoutComponent} from './checkout/checkout.component';
     CategoryModule,
     appRouting,
     ProductModule,
-    CartModule
+    CartModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [],
   bootstrap: [AppComponent]
