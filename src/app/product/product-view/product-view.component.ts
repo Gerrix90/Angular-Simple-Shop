@@ -30,7 +30,8 @@ export class ProductViewComponent implements OnInit {
       // get the product id
       let id: string = params['id'];
       // Return the product from ProductService
-      this.product = this.productService.getProduct(id);
+      this.productService.getProduct(id)
+        .then((product: Product) => this.product = product);
       // Return the cartItem from cartService
       this.cartItem = this.cartService.findItem(id)
     })
