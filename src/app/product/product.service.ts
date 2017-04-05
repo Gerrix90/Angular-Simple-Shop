@@ -3,6 +3,9 @@
  */
 
 import {Injectable} from "@angular/core";
+import {Http, Response} from "@angular/http";
+import 'rxjs/add/operator/toPromise';
+
 
 
 export class Product {
@@ -26,35 +29,38 @@ export class Product {
 
 Injectable()
 export class ProductService {
+  productUrl = 'app/products';
 
-  getProducts(category?: string, search?: string) {
+  constructor(private http: Http) {
+  }
+
+  getProducts(category?: string, search?: string): Promise<Product[]> {
+    let url = this.productUrl;
+
     if (category) {
-      return this.products.filter((product: Product, index: number, array: Product[]) => {
-        return product.categoryId === category;
-      });
+      url += `/?categoryId=${category}`;
     } else if (search) {
-      let lowSearch = search.toLowerCase();
-      return this.products.filter(
-        (product: Product, index: number, array: Product[]) => {
-          return product.title.toLowerCase().indexOf(lowSearch) != -1;
-        });
-    } else {
-      return this.products
+      url += `/?title=${search}`;
     }
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((response: Response) => response.json().data as Product[])
+      .catch(this.handleError);
   }
 
-  getProduct(id: string): Product {
-    for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].id === id) {
-        return this.products[i];
-      }
-    }
-    throw new ProductNotFoundException(`Product ${id} not found`);
+  getProduct(id: string): Promise<Product> {
+    let url = this.productUrl + `/${id}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then((response: Response) => response.json().data as Product)
+      .catch(this.handleError);
+  }
+
+  private handleError(error: any): Promise<any> {
+    window.alert(`An error occurred: ${error}`);
+    return Promise.reject(error.message || error);
   }
 }
 
-export class ProductNotFoundException extends Error {
-  constructor(message?: string) {
-    super(message);
-  }
-}

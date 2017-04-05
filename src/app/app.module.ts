@@ -32,7 +32,7 @@ import {InMemoryWebApiModule} from "angular2-in-memory-web-api";
     appRouting,
     ProductModule,
     CartModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 500})
   ],
   providers: [],
   bootstrap: [AppComponent]
