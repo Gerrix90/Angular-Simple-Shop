@@ -3,6 +3,8 @@
  */
 
 import {Injectable} from "@angular/core";
+import {Http, Response} from "@angular/http";
+import 'rxjs/add/operator/toPromise';
 
 
 export class Category {
@@ -21,8 +23,30 @@ export class Category {
 @Injectable()
   export class CategoryService {
 
-  getCategories(): Category[] {
-    return this.categories;
+  // URL to Categories web api
+  private categoriesUrl = 'app/categories';
+
+  // We keep categories in cache variable
+  private categories: Category[] = [];
+
+  constructor(private http: Http) {
+  }
+
+  getCategories(): Promise<Category[]> {
+    return this.http
+      .get(this.categoriesUrl)
+      .toPromise()
+      .then((response: Response) => {
+        this.categories = response.json().data as Category[];
+        return this.categories;
+      })
+      .catch(this.handleError);
+  }
+
+
+  private handleError(error: any): Promise<any> {
+    window.alert(`An error occurred: ${error}`);
+    return Promise.reject(error.message || error);
   }
 
 
