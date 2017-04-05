@@ -14,7 +14,8 @@ export class CategoryListComponent implements OnInit {
               private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categories = this.categoryService.getCategories()
+    this.categoryService.getCategories()
+      .then((categories: Category[]) => this.categories = categories)
   }
 
   filterProducts(category: Category) {
