@@ -27,7 +27,7 @@ export class Product {
   imageL: string;
 }
 
-Injectable()
+@Injectable()
 export class ProductService {
   productUrl = 'app/products';
 
