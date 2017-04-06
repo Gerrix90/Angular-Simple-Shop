@@ -12,6 +12,6 @@ export class WelcomeComponent implements OnInit {
   constructor( private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categoryService.getCategories().then((categories: Category[]) => this.categories = categories)
+    this.categoryService.getCategories().subscribe((categories: Category[]) => this.categories = categories)
   }
 }

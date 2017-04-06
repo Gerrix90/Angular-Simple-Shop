@@ -4,12 +4,15 @@
 
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
+import {AngularFire, FirebaseListObservable} from "angularfire2";
+
 
 import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import "rxjs/add/observable/empty";
 
 export class Product {
   // Unique Id
@@ -32,30 +35,37 @@ export class Product {
 
 @Injectable()
 export class ProductService {
-  productUrl = 'app/products';
+  productUrl = 'products';
 
-  constructor(private http: Http) {
+  constructor(private af: AngularFire) {
   }
 
   getProducts(category?: string, search?: string): Observable<Product[]> {
-    let url = this.productUrl;
-
-    if (category) {
-      url += `/?categoryId=${category}`;
-    } else if (search) {
-      url += `/?title=${search}`;
+    if (category || search) {
+      let query = <any>{};
+      if (category) {
+        query.orderByChild = "categoryId";
+        query.equalTo = category;
+      } else {
+        query.orderByChild = "title";
+        query.startAt = search.toUpperCase();
+        query.endAt = query.startAt + "\uf8ff";
+      }
+      return this.af.database
+        .list(this.productUrl, {
+          query: query
+        })
+        .catch(this.handleError);
+    } else {
+      return this.af.database
+        .list(this.productUrl)
+        .catch(this.handleError);
     }
-    return this.http
-      .get(url)
-      .map((response: Response) => response.json().data as Product[])
-      .catch(this.handleError);
   }
 
   getProduct(id: string): Observable<Product> {
-    let url = this.productUrl + `/${id}`;
-    return this.http
-      .get(url)
-      .map((response: Response) => response.json().data as Product)
+    return this.af.database
+      .object(this.productUrl + `/${+id - 1}`)
       .catch(this.handleError);
   }
 

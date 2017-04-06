@@ -4,7 +4,10 @@
 
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
-import 'rxjs/add/operator/toPromise';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 
 export class Category {
@@ -24,38 +27,33 @@ export class Category {
   export class CategoryService {
 
   // URL to Categories web api
-  private categoriesUrl = 'app/categories';
+  private categoriesUrl = 'categories';
 
-  // We keep categories in cache variable
-  private categories: Category[] = [];
+  // // We keep categories in cache variable
+  // private categories: FirebaseListObservable<Category[]> ;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private af: AngularFire) {
   }
 
-  getCategories(): Promise<Category[]> {
-    return this.http
-      .get(this.categoriesUrl)
-      .toPromise()
-      .then((response: Response) => {
-        this.categories = response.json().data as Category[];
-        return this.categories;
-      })
+  getCategories(): Observable<Category[]> {
+    return this.af.database
+      .list(this.categoriesUrl)
       .catch(this.handleError);
   }
 
 
-  private handleError(error: any): Promise<any> {
-    window.alert(`An error occurred: ${error}`);
-    return Promise.reject(error.message || error);
+  private handleError(error: any): Observable<any> {
+    let errMsg = (error.message) ? error.message : error.status ?
+      `${error.status} - ${error.statusText}` : 'Server error';
+    window.alert(`An error occurred: ${errMsg}`);
+    return Observable.throw(errMsg);
   }
 
 
-  getCategory(id: string): Category {
-    for (let i = 0; i < this.categories.length; i++) {
-      if (this.categories[i].id === id) {
-        return this.categories[i];
-      }
-    }
-    return null;
+  getCategory(id: string) {
+    return this.af.database
+      .object(this.categoriesUrl + `/${+id - 1}`)
+      .catch(this.handleError);
   }
 }

@@ -15,7 +15,7 @@ export class CategoryListComponent implements OnInit {
 
   ngOnInit() {
     this.categoryService.getCategories()
-      .then((categories: Category[]) => this.categories = categories)
+      .subscribe((categories: Category[]) => this.categories = categories)
   }
 
   filterProducts(category: Category) {
