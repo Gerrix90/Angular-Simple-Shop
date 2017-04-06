@@ -4,9 +4,12 @@
 
 import {Injectable} from "@angular/core";
 import {Http, Response} from "@angular/http";
+
+import {Observable} from "rxjs/Observable";
 import 'rxjs/add/operator/toPromise';
-
-
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 export class Product {
   // Unique Id
@@ -34,7 +37,7 @@ export class ProductService {
   constructor(private http: Http) {
   }
 
-  getProducts(category?: string, search?: string): Promise<Product[]> {
+  getProducts(category?: string, search?: string): Observable<Product[]> {
     let url = this.productUrl;
 
     if (category) {
@@ -44,23 +47,23 @@ export class ProductService {
     }
     return this.http
       .get(url)
-      .toPromise()
-      .then((response: Response) => response.json().data as Product[])
+      .map((response: Response) => response.json().data as Product[])
       .catch(this.handleError);
   }
 
-  getProduct(id: string): Promise<Product> {
+  getProduct(id: string): Observable<Product> {
     let url = this.productUrl + `/${id}`;
     return this.http
       .get(url)
-      .toPromise()
-      .then((response: Response) => response.json().data as Product)
+      .map((response: Response) => response.json().data as Product)
       .catch(this.handleError);
   }
 
-  private handleError(error: any): Promise<any> {
-    window.alert(`An error occurred: ${error}`);
-    return Promise.reject(error.message || error);
+  private handleError(error: any): Observable<any> {
+    let errMsg = (error.message) ? error.message : error.status ?
+      `${error.status} - ${error.statusText}` : 'Server error';
+    window.alert(`An error occurred: ${errMsg}`);
+    return Observable.throw(errMsg);
   }
 }
 

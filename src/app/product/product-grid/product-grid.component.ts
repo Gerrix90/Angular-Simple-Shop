@@ -50,7 +50,7 @@ export class ProductGridComponent implements OnInit {
 
       // Return filtered data from getProducts function
       this.productService.getProducts(category, search)
-        .then((products: Product[]) =>
+        .subscribe((products: Product[]) =>
           // Transform products to appropriate data to display
           this.productsRow = this.transformProducts(products));
     })
