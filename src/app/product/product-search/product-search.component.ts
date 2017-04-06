@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'db-product-search',
   templateUrl: './product-search.component.html',
@@ -18,17 +19,18 @@ export class ProductSearchComponent implements OnInit {
     this.router.navigate(['products'],{queryParams: {search: search}})
   }
 
-  searchChanged(event: KeyboardEvent) {
+  //
+  // searchChanged(event: KeyboardEvent) {
+  //
+  //   // Get an input element
+  //   let element: HTMLInputElement = <HTMLInputElement>event.target;
+  //
+  //   // Update the disabled property depends on value
+  //   if ((element.value).trim()) {
+  //     this.disabled = false
+  //   } else {
+  //     this.disabled = true
+  //   }
 
-    // Get an input element
-    let element: HTMLInputElement = <HTMLInputElement>event.target;
-
-    // Update the disabled property depends on value
-    if ((element.value).trim()) {
-      this.disabled = false
-    } else {
-      this.disabled = true
-    }
-
-  }
+  // }
 }

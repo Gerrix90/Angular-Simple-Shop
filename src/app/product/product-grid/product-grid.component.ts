@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Product, ProductService} from "../product.service";
 import {ActivatedRoute} from "@angular/router";
 
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+
+
 @Component({
   selector: 'db-product-grid',
   templateUrl: './product-grid.component.html',
@@ -41,7 +45,10 @@ export class ProductGridComponent implements OnInit {
 
   ngOnInit() {
     //subscribe route
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams
+      .debounceTime(300) // wait for 300ms pause in events
+      .distinctUntilChanged() // only changed values pass
+      .subscribe(params => {
       let category: string = params['category'];
       let search: string = params['search'];
 
