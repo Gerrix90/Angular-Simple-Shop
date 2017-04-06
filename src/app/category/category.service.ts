@@ -56,12 +56,6 @@ export class Category {
         return this.categories[i];
       }
     }
-    throw new CategoryNotFoundException(`Category ${id} not found`);
-  }
-}
-
-export class CategoryNotFoundException extends Error {
-  constructor(message?: string) {
-    super(message);
+    return null;
   }
 }
