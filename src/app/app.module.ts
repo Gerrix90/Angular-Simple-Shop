@@ -46,7 +46,7 @@ export const fbConfig = {
     appRouting,
     ProductModule,
     CartModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 1000}),
+    // InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 1000}),
     AngularFireModule.initializeApp(fbConfig)
   ],
   providers: [],
