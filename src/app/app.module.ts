@@ -15,7 +15,7 @@ import {CheckoutComponent} from './checkout/checkout.component';
 import {InMemoryDataService} from "./shared/in-memory-data.service";
 import {InMemoryWebApiModule} from "angular2-in-memory-web-api";
 
-import {AngularFireModule} from 'angularfire2';
+import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
 
 
 // Initialize Firebase
@@ -26,6 +26,12 @@ export const fbConfig = {
   projectId: "simple-store-12e8e",
   storageBucket: "simple-store-12e8e.appspot.com",
   messagingSenderId: "250747019841"
+};
+
+// Initialize Firebase Authentication
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Redirect
 };
 
 
@@ -47,7 +53,8 @@ export const fbConfig = {
     ProductModule,
     CartModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 1000}),
-    AngularFireModule.initializeApp(fbConfig)
+    AngularFireModule.initializeApp(fbConfig),
+    AngularFireModule.initializeApp(fbConfig, myFirebaseAuthConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
