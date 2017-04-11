@@ -53,7 +53,6 @@ const myFirebaseAuthConfig = {
     ProductModule,
     CartModule,
     // InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 1000}),
-    AngularFireModule.initializeApp(fbConfig),
     AngularFireModule.initializeApp(fbConfig, myFirebaseAuthConfig)
   ],
   providers: [],
