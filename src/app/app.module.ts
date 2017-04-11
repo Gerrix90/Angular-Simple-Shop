@@ -16,6 +16,7 @@ import {InMemoryDataService} from "./shared/in-memory-data.service";
 import {InMemoryWebApiModule} from "angular2-in-memory-web-api";
 
 import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
+import {SignInComponent} from './auth/sign-in/sign-in.component';
 
 
 // Initialize Firebase
@@ -41,7 +42,8 @@ const myFirebaseAuthConfig = {
     NavbarComponent,
     WelcomeComponent,
     FooterComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
