@@ -11,6 +11,10 @@ export class AuthService {
     });
   }
 
+  get authenticated(): boolean {
+    return this.authState !== null;
+  }
+
   signIn(email: string, password: string): firebase.Promise<FirebaseAuthState> {
     return this.auth$.login({
       email: email,
