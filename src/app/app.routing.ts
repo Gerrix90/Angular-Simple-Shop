@@ -8,9 +8,11 @@ import {ProductListComponent} from "./product/product-list/product-list.componen
 import {ProductViewComponent} from "./product/product-view/product-view.component";
 import {CartViewComponent} from "./cart/cart-view/cart-view.component";
 import {CheckoutComponent} from "./checkout/checkout.component";
+import {SignInComponent} from "./auth/sign-in/sign-in.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  {path: "login", component: SignInComponent},
   { path: 'welcome', component: WelcomeComponent },
   { path: 'products', component: ProductListComponent },
   {path: 'products/:id', component: ProductViewComponent},

@@ -3,18 +3,18 @@
 		<h1>Sign in to Dream Bean</h1>
 		<a routerLink="/register">New to Dream Bean? Sign up!</a>
 
-		<form class="form-horizontal" novalidate>
+		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal" novalidate>
 			<div class="form-group row">
 				<label for="email" class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
-					<input id="email" type="email" class="form-control" placeholder="Email">
+					<input [formControl]="email" id="email" type="email" class="form-control" placeholder="Email">
 				</div>
 				<div>Username is required</div>
 			</div>
 			<div class="form-group row">
 				<label for="password" class="col-sm-2 control-label">Password</label>
 				<div class="col-sm-10">
-					<input id="password" type="password" class="form-control" placeholder="Password">
+					<input [formControl]="password" id="password" type="password" class="form-control" placeholder="Password">
 				</div>
 				<div>Password is required</div>
 			</div>
@@ -24,7 +24,7 @@
 					<a routerLink="/forgot-pass" class="forgot-pass">Forgot password?</a>
 				</div>
 			</div>
-			<div class="alert alert-danger">error</div>
+			<div class="alert alert-danger">{{error}}</div>
 		</form>
 	</div>
 </div>
