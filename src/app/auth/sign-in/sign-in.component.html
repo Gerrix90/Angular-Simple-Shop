@@ -1,27 +1,30 @@
-<div class="row">
-	<div class="col-sm-6 col-md-offset-3">
-		<h1>Sign in to Dream Bean</h1>
-		<a routerLink="/register">New to Dream Bean? Sign up!</a>
+<div class="row auth-main">
+	<div class="col-sm-6 offset-md-3 auth-block">
+		<h1 class="my-4">Sign in to Dream Bean</h1>
+		<a routerLink="/register" class="auth-link">New to Dream Bean? Sign up!</a>
 
 		<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal" novalidate>
 			<div class="form-group row"
-			     [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
+			     [ngClass]="{'has-danger': (!email.valid && email.touched),
+			      'has-success': (email.valid && email.touched)}">
 				<label for="email" class="col-sm-2 control-label">Email</label>
 				<div class="col-sm-10">
 					<input [formControl]="email" id="email" type="email" class="form-control" placeholder="Email">
 				</div>
-				<div>Username is required</div>
+				<div *ngIf="submitted && !email.valid" class="help-block">Username is required</div>
 			</div>
-			<div class="form-group row">
+			<div class="form-group row"
+			     [ngClass]="{'has-error': (!password.valid && password.touched),
+			      'has-success': (password.valid && password.touched)}">
 				<label for="password" class="col-sm-2 control-label">Password</label>
 				<div class="col-sm-10">
 					<input [formControl]="password" id="password" type="password" class="form-control" placeholder="Password">
 				</div>
-				<div>Password is required</div>
+				<div *ngIf="submitted && !password.valid" class="help-block">Password is required</div>
 			</div>
 			<div class="form-group row">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default btn-auth">Sign in</button>
+				<div class="offset-sm-2 col-sm-10">
+					<button [disabled]="submitted" type="submit" class="btn btn-default btn-auth">Sign in</button>
 					<a routerLink="/forgot-pass" class="forgot-pass">Forgot password?</a>
 				</div>
 			</div>

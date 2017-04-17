@@ -17,6 +17,7 @@ import {InMemoryWebApiModule} from "angular2-in-memory-web-api";
 
 import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
 import {SignInComponent} from './auth/sign-in/sign-in.component';
+import {AuthService} from "./auth/auth.service";
 
 
 // Initialize Firebase
@@ -31,7 +32,7 @@ export const fbConfig = {
 
 // Initialize Firebase Authentication
 const myFirebaseAuthConfig = {
-  provider: AuthProviders.Google,
+  provider: AuthProviders.Password,
   method: AuthMethods.Redirect
 };
 
@@ -57,7 +58,7 @@ const myFirebaseAuthConfig = {
     // InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 1000}),
     AngularFireModule.initializeApp(fbConfig, myFirebaseAuthConfig)
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
