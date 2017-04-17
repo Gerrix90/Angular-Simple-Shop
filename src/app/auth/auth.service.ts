@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {FirebaseAuthState, AuthProviders, AuthMethods} from "angularfire2";
+import {FirebaseAuthState, AuthProviders, AuthMethods, AngularFire} from "angularfire2";
 
 @Injectable()
 export class AuthService {
   private authState: FirebaseAuthState = null;
 
-  constructor(public auth$: FirebaseAuth) {
-    auth$.subscribe((state: FirebaseAuthState) => {
+  constructor(public af: AngularFire) {
+    af.auth.subscribe((state: FirebaseAuthState) => {
       this.authState = state;
     });
   }
@@ -16,7 +16,7 @@ export class AuthService {
   }
 
   signIn(email: string, password: string): firebase.Promise<FirebaseAuthState> {
-    return this.auth$.login({
+    return this.af.auth.login({
       email: email,
       password: password
     }, {
@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   signOut(): void {
-    this.auth$.logout();
+    this.af.auth.logout();
   }
 
 }

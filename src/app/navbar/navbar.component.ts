@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
     {href: 'welcome', label: 'Home', active: true},
     {href: 'products', label: 'Products', active: false},
     {href: 'checkout', label: 'Checkout', active: false},
-    {href: '#', label: 'Sign out', active: false}
+    {href: 'login', label: 'Sign in', active: false}
   ];
 
 
