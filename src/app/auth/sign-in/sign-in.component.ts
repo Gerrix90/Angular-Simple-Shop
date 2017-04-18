@@ -31,4 +31,18 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(values: any): void {
+    this.submitted = true;
+    this.auth.signIn(values.email, values.password)
+      .then(() => this.postSignIn())
+      .catch((error) => {
+        this.error = "Username or password is incorrect";
+        this.submitted = false;
+      });
+  }
+
+  private postSignIn(): void {
+    this.router.navigate(["/welcome"]);
+  }
+
 }

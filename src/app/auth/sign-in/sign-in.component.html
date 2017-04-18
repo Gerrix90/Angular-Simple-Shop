@@ -58,7 +58,7 @@
 					<a routerLink="/forgot-pass" class="forgot-pass">Forgot password?</a>
 				</div>
 			</div>
-			<div class="alert alert-danger">{{error}}</div>
+			<div *ngIf="error" class="alert alert-danger">{{error}}</div>
 		</form>
 	</div>
 </div>
