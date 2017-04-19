@@ -36,7 +36,8 @@ export class SignInComponent implements OnInit {
     this.auth.signIn(values.email, values.password)
       .then(() => this.postSignIn())
       .catch((error) => {
-        this.error = "Username or password is incorrect";
+        this.error = error.message;
+        // "Username or password is incorrect";
         this.submitted = false;
       });
   }

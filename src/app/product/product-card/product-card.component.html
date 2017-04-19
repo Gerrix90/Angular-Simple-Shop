@@ -1,5 +1,5 @@
-<div class="card-deck mt-3">
-  <div class="card" *ngFor="let product of productRow">
+<div class="card-deck my-3">
+	<div class="card my-2" *ngFor="let product of productRow">
     <h5 class="card-header text-xs-center">
       {{product.title}}
     </h5>
@@ -15,8 +15,8 @@
       <p class="card-text">{{product.desc}}</p>
     </div>
 
-    <div class="card-footer text-xs-center">
-      <a class="btn btn-primary" (click)="buy(product)">Buy Now</a>
+		<div class="card-footer text-center">
+			<a class="btn btn-primary my-1" (click)="buy(product)">Buy Now</a>
       <a class="btn btn-secondary" [routerLink]="['/products', product.id]">More Info</a>
     </div>
   </div>

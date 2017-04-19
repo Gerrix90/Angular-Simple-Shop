@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {AuthService} from "../auth/auth.service";
 
 export interface NavItem {
   // Navigation link
@@ -15,10 +17,18 @@ export interface NavItem {
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  activeUser: string = null;
 
-  constructor() { }
+  constructor(private authService: AuthService,
+              private router: Router) {
+  }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.authService.signOut();
+    this.router.navigateByUrl("/login");
   }
 
   // App name
@@ -29,7 +39,7 @@ export class NavbarComponent implements OnInit {
     {href: 'welcome', label: 'Home', active: true},
     {href: 'products', label: 'Products', active: false},
     {href: 'checkout', label: 'Checkout', active: false},
-    {href: 'login', label: 'Sign in', active: false}
+    // {href: 'login', label: 'Sign in', active: false}
   ];
 
 

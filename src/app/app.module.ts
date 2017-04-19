@@ -19,6 +19,7 @@ import {AngularFireModule, AuthProviders, AuthMethods} from 'angularfire2';
 import {SignInComponent} from './auth/sign-in/sign-in.component';
 import {AuthService} from "./auth/auth.service";
 import {SignUpComponent} from './auth/sign-up/sign-up.component';
+import {AuthGuard} from "./auth/auth.guard";
 
 
 // Initialize Firebase
@@ -60,7 +61,7 @@ const myFirebaseAuthConfig = {
     // InMemoryWebApiModule.forRoot(InMemoryDataService, {delay: 1000}),
     AngularFireModule.initializeApp(fbConfig, myFirebaseAuthConfig)
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,6 @@ import {FirebaseAuthState} from "angularfire2";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/first";
 
-
 @Injectable()
 export class AuthGuard implements CanActivate {
 
