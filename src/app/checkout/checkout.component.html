@@ -8,7 +8,7 @@
 						<input class="form-control" type="text" value="" id="firstName" formControlName="firstName">
 						<p class="alert alert-danger"
 						   role="alert"
-						   [hidden]="form.controls.firstName.valid || form.controls.firstName.pristine">
+						   [hidden]="form.get('firstName').valid || form.get('firstName').pristine">
 							The First Name is required
 						</p>
 					</div>
@@ -21,7 +21,7 @@
 						<input class="form-control" type="text" value="" id="lastName" formControlName="lastName">
 						<p class="alert alert-danger"
 						   role="alert"
-						   [hidden]="form.controls.lastName.valid || form.controls.lastName.pristine">
+						   [hidden]="form.get('lastName').valid || form.get('lastName').pristine">
 							The Last Name is required
 						</p>
 					</div>
@@ -33,7 +33,7 @@
 						<input class="form-control" type="text" value="" id="email" formControlName="email">
 						<p class="alert alert-danger"
 						   role="alert"
-						   [hidden]="form.controls.email.valid || form.controls.email.pristine">
+						   [hidden]="form.get('email').valid || form.get('email').pristine">
 							The Email is required
 						</p>
 					</div>
@@ -45,7 +45,7 @@
 						<input class="form-control" type="text" value="" id="phone" formControlName="phone">
 						<p class="alert alert-danger"
 						   role="alert"
-						   [hidden]="form.controls.phone.valid || form.controls.phone.pristine">
+						   [hidden]="form.get('phone').valid || form.get('phone').pristine">
 							The Phone is required
 						</p>
 					</div>
@@ -57,7 +57,7 @@
 						<input class="form-control" type="text" value="" id="address" formControlName="address">
 						<p class="alert alert-danger"
 						   role="alert"
-						   [hidden]="form.controls.address.valid || form.controls.address.pristine">
+						   [hidden]="form.get('address').valid || form.get('address').pristine">
 							The Address is required
 						</p>
 					</div>

@@ -19,7 +19,7 @@ export interface NavItem {
 export class NavbarComponent implements OnInit {
   activeUser: string = null;
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
               private router: Router) {
   }
 
